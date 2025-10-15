@@ -1,0 +1,321 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #ff5252;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+main {
+    flex: 1;
+}
+
+/* Interactive Elements */
+.interactive-element {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.interactive-element h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.interactive-element p {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* Neal.fun inspired button */
+.neal-button {
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.neal-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Elusive button that moves away from cursor */
+#elusive-button {
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+/* Catapult Volume Control */
+.catapult-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+.volume-target {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.volume-bar {
+    width: 80%;
+    height: 20px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: relative;
+    overflow: visible;
+}
+
+.volume-level {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.target-marker {
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background-color: #FF0000;
+    top: 0;
+    left: 50%; /* Will be set by JavaScript */
+    z-index: 2;
+}
+
+.catapult-base {
+    width: 100px;
+    height: 40px;
+    background-color: #8B4513;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.catapult-arm {
+    width: 15px;
+    height: 100px;
+    background-color: #A0522D;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg); /* Perpendicular to volume bar */
+    transform-origin: bottom center;
+}
+
+.catapult-ball {
+    width: 20px;
+    height: 20px;
+    background-color: #FF5722;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.trajectory-line {
+    position: absolute;
+    width: 2px;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    transform-origin: bottom center;
+    bottom: 40px;
+    left: 50%;
+}
+
+.flying-ball {
+    position: absolute;
+    transition: transform 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    pointer-events: none;
+}
+
+#catapult-launch {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#catapult-launch:active {
+    background-color: #3e8e41;
+}
+
+/* Chaotic text input */
+.input-container {
+    margin-bottom: 2rem;
+}
+
+#chaotic-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.chaotic-keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin-bottom: 2rem;
+}
+
+.key {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.key:hover {
+    background-color: #ddd;
+}
+
+/* Captcha section */
+.captcha-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.captcha-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #eee;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.captcha-image.selected {
+    border-color: #ff5252;
+}
+
+/* Achievement section */
+.achievement {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.achievement img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+}
+
+footer a {
+    color: #ff5252;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+/* Inconvenient UI features */
+/* Text that fades as you read */
+.interactive-element p {
+    transition: opacity 0.5s ease;
+}
+
+.interactive-element:hover p {
+    opacity: 0.3;
+}
+
+/* Elements that shake randomly */
+.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+/* Buttons that shrink when hovered */
+.shrink-hover:hover {
+    transform: scale(0.8);
+}
+
+/* Inverted scrolling */
+.inverted-scroll {
+    transform: scaleY(-1);
+}
+.inverted-scroll > * {
+    transform: scaleY(-1);
+}
